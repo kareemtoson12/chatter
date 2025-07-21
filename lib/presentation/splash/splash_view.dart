@@ -10,14 +10,32 @@ class SplashView extends StatefulWidget {
   State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _SplashViewState extends State<SplashView>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+
   @override
   void initState() {
+    super.initState();
+    // Animation setup
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1200),
+      vsync: this,
+    );
+    _fadeAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
+    _controller.forward();
+
     //navigation after 2 sec
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, AppRoutes.home);
+      Navigator.pushReplacementNamed(context, AppRoutes.login);
     });
-    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -26,7 +44,10 @@ class _SplashViewState extends State<SplashView> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
-          child: Text('chatter', style: AppTextStyles.splashTitleStyle()),
+          child: FadeTransition(
+            opacity: _fadeAnimation,
+            child: Text('chatter', style: AppTextStyles.splashTitleStyle()),
+          ),
         ),
       ),
     );
