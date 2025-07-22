@@ -1,10 +1,87 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:social/app/routing/routes.dart';
+import 'package:social/app/styles/colros_manager.dart';
+import 'package:social/app/styles/fonts.dart';
+import 'package:social/presentation/auth/login/widgets/login_button.dart';
+import 'package:social/presentation/auth/login/widgets/text_feaild.dart';
+import 'package:social/presentation/auth/signup/widgets/signup_button.dart';
+import 'package:social/presentation/auth/signup/widgets/signup_feilds.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final hight = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(hight * 0.02),
+          decoration: BoxDecoration(gradient: ColorManager.blueWhiteGradient),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(height: hight * 0.15),
+              Center(
+                child: Text('chatter', style: AppTextStyles.splashTitleStyle()),
+              ),
+              SizedBox(height: 40),
+              SignUpfields(),
+              SizedBox(height: 40),
+              SignupButton(),
+              SizedBox(height: 100),
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(thickness: 1, color: Colors.grey.shade300),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      'OR',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(thickness: 1, color: Colors.grey.shade300),
+                  ),
+                ],
+              ),
+              SizedBox(height: 24),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: " already have an account? ",
+                    style: TextStyle(color: Colors.grey.shade600, fontSize: 16),
+                    children: [
+                      TextSpan(
+                        text: 'Log in.',
+                        style: const TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // Replace with your sign-up navigation logic
+                            Navigator.pushNamed(context, AppRoutes.login);
+                          },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    ;
   }
 }

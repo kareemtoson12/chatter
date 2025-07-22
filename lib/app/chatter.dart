@@ -10,8 +10,8 @@ class Chatter extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Expense App',
-      initialRoute: AppRoutes.onboarding,
+      title: 'Chatty',
+      initialRoute: AppRoutes.splash,
       onGenerateRoute: generateRoute,
     );
   }

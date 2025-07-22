@@ -27,9 +27,13 @@ class _SplashViewState extends State<SplashView>
     _fadeAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
     _controller.forward();
 
-    //navigation after 2 sec
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, AppRoutes.login);
+    // Delay navigation until widget is mounted
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(seconds: 2), () {
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, AppRoutes.onboarding);
+        }
+      });
     });
   }
 

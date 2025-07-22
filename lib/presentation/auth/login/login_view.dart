@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:social/app/routing/routes.dart';
 import 'package:social/app/styles/colros_manager.dart';
 import 'package:social/app/styles/fonts.dart';
 import 'package:social/presentation/auth/login/widgets/login_button.dart';
@@ -59,11 +61,16 @@ class LoginView extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: 'Sign up.',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
                         ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // Replace with your sign-up navigation logic
+                            Navigator.pushNamed(context, AppRoutes.signUp);
+                          },
                       ),
                     ],
                   ),

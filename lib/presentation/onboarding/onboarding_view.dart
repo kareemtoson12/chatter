@@ -25,16 +25,24 @@ class OnboardingView extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
-                  'assets/images/on2.jpg',
+                  'assets/images/kk.jpg',
                   fit: BoxFit.contain,
                   height: screenHeight * 0.4,
+                  errorBuilder: (context, error, stackTrace) {
+                    print('Error loading image: $error');
+                    return Container(
+                      height: screenHeight * 0.4,
+                      color: Colors.grey[300],
+                      child: Center(child: Text('Image not found')),
+                    );
+                  },
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 34),
               Text(
                 "Connect, Share, and Explore the world around you\nwith our Social Media App!",
                 textAlign: TextAlign.center,
-                style: AppTextStyles.splashTitleStyle().copyWith(fontSize: 28),
+                style: AppTextStyles.splashTitleStyle().copyWith(fontSize: 24),
               ),
               const SizedBox(height: 144),
 
