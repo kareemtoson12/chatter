@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social/app/routing/routes.dart';
+import 'package:social/app/styles/colros_manager.dart';
 
 import 'package:social/app/styles/fonts.dart';
 
@@ -41,12 +42,14 @@ class _SplashViewState extends State<SplashView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Center(
-          child: FadeTransition(
-            opacity: _fadeAnimation,
-            child: Text('chatter', style: AppTextStyles.splashTitleStyle()),
+      body: Container(
+        decoration: BoxDecoration(gradient: ColorManager.blueWhiteGradient),
+        child: SafeArea(
+          child: Center(
+            child: FadeTransition(
+              opacity: _fadeAnimation,
+              child: Text('chatter', style: AppTextStyles.splashTitleStyle()),
+            ),
           ),
         ),
       ),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:social/app/styles/colros_manager.dart';
 import 'package:social/app/styles/fonts.dart';
+import 'package:social/presentation/auth/login/widgets/login_button.dart';
+import 'package:social/presentation/auth/login/widgets/text_feaild.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -8,12 +11,12 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     //responsive
     int hight = MediaQuery.of(context).size.height.toInt();
-    int width = MediaQuery.of(context).size.width.toInt();
+    //int width = MediaQuery.of(context).size.width.toInt();
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
+        child: Container(
+          padding: EdgeInsets.all(hight * 0.02),
+          decoration: BoxDecoration(gradient: ColorManager.blueWhiteGradient),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -22,66 +25,49 @@ class LoginView extends StatelessWidget {
                 child: Text('chatter', style: AppTextStyles.splashTitleStyle()),
               ),
               SizedBox(height: 40),
-              TextField(
-                style: const TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                ),
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Color(0xFFF8F8F8),
-                  hintText: 'Email..',
-                  hintStyle: TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w400,
+              TextFeaildWidget(),
+              SizedBox(height: 40),
+              LoginButton(),
+              SizedBox(height: 100),
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(thickness: 1, color: Colors.grey.shade300),
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(width: 1, color: Colors.black),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      'OR',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1,
+                      ),
+                    ),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(
-                      width: 1,
-                      color: Colors.grey,
-                    ), // Change to your color
+                  Expanded(
+                    child: Divider(thickness: 1, color: Colors.grey.shade300),
                   ),
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 16,
-                  ),
-                ),
-                keyboardType: TextInputType.emailAddress,
+                ],
               ),
-              SizedBox(height: 16),
-              TextField(
-                style: const TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                ),
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Color(0xFFF8F8F8),
-                  hintText: 'Password',
-                  hintStyle: TextStyle(
-                    color: Colors.black38,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(width: 1, color: Colors.black),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(
-                      width: 1,
-                      color: Colors.grey,
-                    ), // Change to your color
+              SizedBox(height: 24),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: "Don't have an account? ",
+                    style: TextStyle(color: Colors.grey.shade600, fontSize: 16),
+                    children: [
+                      TextSpan(
+                        text: 'Sign up.',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                obscureText: true,
               ),
             ],
           ),
