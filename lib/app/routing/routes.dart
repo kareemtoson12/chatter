@@ -1,7 +1,7 @@
 class AppRoutes {
-  static const String splash = 'Splash';
-  static const String home = 'HomeScreen';
-  static const String login = 'LoginScreen';
-  static const String signUp = 'signUp';
-  static const String onboarding = 'OnboardingView';
+  static const String splash = '/';
+  static const String home = '/home';
+  static const String login = '/login';
+  static const String signUp = '/signup';
+  static const String onboarding = '/onboarding';
 }

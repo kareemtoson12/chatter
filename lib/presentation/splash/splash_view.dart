@@ -1,46 +1,29 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:social/app/routing/routes.dart';
 import 'package:social/app/styles/colros_manager.dart';
-
-import 'package:social/app/styles/fonts.dart';
+import 'package:social/presentation/home/home_view.dart';
+import 'package:social/presentation/onboarding/onboarding_view.dart';
 
 class SplashView extends StatefulWidget {
-  const SplashView({super.key});
+  const SplashView({Key? key}) : super(key: key);
 
   @override
   State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashViewState extends State<SplashView>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _fadeAnimation;
-
+class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    // Animation setup
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 1200),
-      vsync: this,
-    );
-    _fadeAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
-    _controller.forward();
-
-    // Delay navigation until widget is mounted
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(const Duration(seconds: 2), () {
-        if (mounted) {
-          Navigator.pushReplacementNamed(context, AppRoutes.onboarding);
-        }
-      });
+    // Navigate after 2 seconds
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const OnboardingView(),
+        ), // or your onboarding/login screen
+      );
     });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   @override
@@ -50,9 +33,16 @@ class _SplashViewState extends State<SplashView>
         decoration: BoxDecoration(gradient: ColorManager.blueWhiteGradient),
         child: SafeArea(
           child: Center(
-            child: FadeTransition(
-              opacity: _fadeAnimation,
-              child: Text('chatter', style: AppTextStyles.splashTitleStyle()),
+            child: Image.asset(
+              'assets/images/icon.png',
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) {
+                print('Error loading image: $error');
+                return Container(
+                  color: Colors.grey[300],
+                  child: const Center(child: Text('Image not found')),
+                );
+              },
             ),
           ),
         ),
