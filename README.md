@@ -1,16 +1,86 @@
-# social
+# SocialApp
 
-A new Flutter project.
+A modern Flutter social media app UI clone featuring stories, posts, chat, onboarding, authentication, and animated navigation.
+
+## Features
+
+- Onboarding screen with gradient background
+- Login and signup screens
+- Instagram-like stories widget
+- Reusable post widget
+- Animated curved navigation bar
+- Chat list and chat detail screens
+- SVG asset support
+- Custom gradients and styles
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- [Flutter](https://flutter.dev/docs/get-started/install) (3.x recommended)
+- Dart SDK
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. **Clone the repository:**
+   ```
+   git clone https://github.com/yourusername/socialApp.git
+   cd socialApp/social
+   ```
+
+2. **Install dependencies:**
+   ```
+   flutter pub get
+   ```
+
+3. **Run the app:**
+   ```
+   flutter run
+   ```
+
+### Assets
+
+- Place your images and SVGs in the `assets/images/` directory.
+- Declare assets in `pubspec.yaml`:
+  ```yaml
+  flutter:
+    assets:
+      - assets/images/
+  ```
+
+## Project Structure
+
+```
+lib/
+  app/
+    chatter.dart
+    routing/
+      routes.dart
+      routing.dart
+  presentation/
+    auth/
+      login/
+      signup/
+    onboarding/
+    splash/
+    home/
+      home_view.dart
+      widgets/
+        stories.dart
+        posts_widget.dart
+        chatList.dart
+        ...
+```
+
+## Packages Used
+
+- [flutter_svg](https://pub.dev/packages/flutter_svg)
+- [curved_navigation_bar](https://pub.dev/packages/curved_navigation_bar)
+
+## Customization
+
+- Update assets in `assets/images/`
+- Modify gradients and styles in `app/styles/`
+- Add new screens or widgets as needed
+
+##
