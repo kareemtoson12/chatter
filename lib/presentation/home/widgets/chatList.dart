@@ -38,9 +38,14 @@ class ChatListView extends StatelessWidget {
 
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text("Chats", style: AppTextStyles.splashTitleStyle()),
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                  Text("Chats", style: AppTextStyles.splashTitleStyle()),
+                ],
               ),
 
               //search textfeild

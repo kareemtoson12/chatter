@@ -41,25 +41,24 @@ class _InstagramPostState extends State<InstagramPost> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      color: Colors.white,
+      color: isDark ? Colors.black : Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Header
-          _buildHeader(),
-
+          _buildHeader(isDark),
           // Image carousel
           _buildImageCarousel(),
-
           // Action buttons
-          _buildActionButtons(),
+          _buildActionButtons(isDark),
         ],
       ),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(bool isDark) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Row(
@@ -70,7 +69,6 @@ class _InstagramPostState extends State<InstagramPost> {
             backgroundImage: AssetImage(widget.userAvatarAsset),
           ),
           const SizedBox(width: 12),
-
           // Username and location
           Expanded(
             child: Column(
@@ -80,9 +78,10 @@ class _InstagramPostState extends State<InstagramPost> {
                   children: [
                     Text(
                       widget.username,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
+                        color: isDark ? Colors.white : Colors.black,
                       ),
                     ),
                     if (widget.isVerified) ...[
@@ -94,16 +93,21 @@ class _InstagramPostState extends State<InstagramPost> {
                 if (widget.location.isNotEmpty)
                   Text(
                     widget.location,
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: isDark ? Colors.white70 : Colors.grey,
+                    ),
                   ),
               ],
             ),
           ),
-
           // More options
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.more_horiz),
+            icon: Icon(
+              Icons.more_horiz,
+              color: isDark ? Colors.white : Colors.black,
+            ),
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(),
           ),
@@ -134,7 +138,6 @@ class _InstagramPostState extends State<InstagramPost> {
             },
           ),
         ),
-
         // Page indicator
         if (widget.imageAssets.length > 1)
           Positioned(
@@ -156,7 +159,6 @@ class _InstagramPostState extends State<InstagramPost> {
               ),
             ),
           ),
-
         // Dots indicator
         if (widget.imageAssets.length > 1)
           Positioned(
@@ -185,7 +187,7 @@ class _InstagramPostState extends State<InstagramPost> {
     );
   }
 
-  Widget _buildActionButtons() {
+  Widget _buildActionButtons(bool isDark) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Row(
@@ -200,25 +202,32 @@ class _InstagramPostState extends State<InstagramPost> {
             },
             child: Icon(
               _isLiked ? Icons.favorite : Icons.favorite_border,
-              color: _isLiked ? Colors.red : Colors.black,
+              color: _isLiked
+                  ? Colors.red
+                  : (isDark ? Colors.white : Colors.black),
               size: 24,
             ),
           ),
           const SizedBox(width: 16),
-
           // Comment button
           GestureDetector(
             onTap: widget.onComment,
-            child: const Icon(Icons.chat_bubble_outline, size: 24),
+            child: Icon(
+              Icons.chat_bubble_outline,
+              size: 24,
+              color: isDark ? Colors.white : Colors.black,
+            ),
           ),
           const SizedBox(width: 16),
-
           // Share button
           GestureDetector(
             onTap: widget.onShare,
-            child: const Icon(Icons.send_outlined, size: 24),
+            child: Icon(
+              Icons.send_outlined,
+              size: 24,
+              color: isDark ? Colors.white : Colors.black,
+            ),
           ),
-
           const Spacer(),
         ],
       ),
