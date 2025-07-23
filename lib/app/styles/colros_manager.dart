@@ -9,6 +9,11 @@ class ColorManager {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );
+  static const LinearGradient blueWhiteGradientHome = LinearGradient(
+    colors: [blue, white, white, white],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
   static final LinearGradient buttonColor = LinearGradient(
     colors: [Colors.blue.shade700, Colors.blue.shade800],
     begin: Alignment.topLeft,

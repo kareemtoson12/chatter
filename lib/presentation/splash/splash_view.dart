@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:social/app/styles/colros_manager.dart';
 import 'package:social/presentation/home/home_view.dart';
-import 'package:social/presentation/onboarding/onboarding_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -19,9 +18,7 @@ class _SplashViewState extends State<SplashView> {
     Timer(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder: (_) => const OnboardingView(),
-        ), // or your onboarding/login screen
+        MaterialPageRoute(builder: (_) => const HomeView()),
       );
     });
   }
