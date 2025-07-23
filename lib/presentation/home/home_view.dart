@@ -1,8 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:social/app/styles/colros_manager.dart';
 import 'package:social/app/styles/fonts.dart';
+import 'package:social/presentation/home/widgets/chatList.dart';
 
 import 'package:social/presentation/home/widgets/posts_widget.dart';
 import 'package:social/presentation/home/widgets/stories.dart';
@@ -25,10 +26,10 @@ class _HomeViewState extends State<HomeView> {
         key: _bottomNavigationKey,
         index: 0,
         items: <Widget>[
+          Icon(Icons.home, size: 30),
+          Icon(Icons.search, size: 30),
           Icon(Icons.add, size: 30),
-          Icon(Icons.list, size: 30),
-          Icon(Icons.compare_arrows, size: 30),
-          Icon(Icons.call_split, size: 30),
+          Icon(Icons.favorite_border, size: 30),
           Icon(Icons.perm_identity, size: 30),
         ],
         color: Colors.blue,
@@ -55,6 +56,7 @@ class _HomeViewState extends State<HomeView> {
               child: Column(
                 children: [
                   //header
+                  // ...existing code...
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -63,13 +65,21 @@ class _HomeViewState extends State<HomeView> {
                         style: AppTextStyles.splashTitleStyle().copyWith(
                           fontSize: 30,
                         ),
-
-                        //svg  image
                       ),
-
-                      Image.asset('assets/images/message_icon.png'),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const ChatListView(),
+                            ),
+                          );
+                        },
+                        child: Image.asset('assets/images/message_icon.png'),
+                      ),
                     ],
                   ),
+                  //
                   SizedBox(height: 15),
                   //stories
                   Stories(),
