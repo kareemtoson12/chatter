@@ -1,16 +1,69 @@
 # chatter
 
-A new Flutter project.
+A cross-platform chat application built with Flutter.
+
+## Features
+
+- Runs on Android, iOS, Windows, macOS, and Linux
+- Uses Material Design icons
+- Path provider support for all platforms
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+- Dart SDK (included with Flutter)
+- Platform-specific dependencies (Android Studio, Xcode, etc.)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone <your-repo-url>
+   cd chatter
+   ```
+
+2. Get dependencies:
+
+   ```sh
+   flutter pub get
+   ```
+
+3. Run the app:
+   ```sh
+   flutter run
+   ```
+
+### Building for Desktop
+
+- **Windows:**
+  ```sh
+  flutter run -d windows
+  ```
+- **macOS:**
+  ```sh
+  flutter run -d macos
+  ```
+- **Linux:**
+  ```sh
+  flutter run -d linux
+  ```
+
+## Project Structure
+
+- `lib/` - Main Dart source code
+- `android/`, `ios/`, `windows/`, `macos/`, `linux/` - Platform-specific code
+- `test/` - Unit and widget tests
+
+## Useful Resources
+
+- [Flutter Documentation](https://docs.flutter.dev/)
+- [Dart Documentation](https://dart.dev/guides)
+
+## License
+
+This project is licensed under the MIT License.

@@ -1,3 +1,4 @@
+import 'package:chatter/app/routing/routes.dart';
 import 'package:chatter/app/styles/font_style.dart';
 import 'package:chatter/presentation/auth/signup/widgets/custom_text_field.dart';
 import 'package:chatter/presentation/auth/signup/widgets/login_button.dart';
@@ -41,6 +42,17 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       CustomTextField(
+                        name: 'UserName',
+                        controller: emailController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a userName';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      CustomTextField(
                         name: 'Password',
                         controller: passwordController,
                         validator: (value) {
@@ -53,13 +65,7 @@ class SignUpScreen extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 25),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          'Forget password?',
-                          style: FontStyles.pacificoBlue15,
-                        ),
-                      ),
+
                       const SizedBox(height: 45),
                       LoginButtons(buttonName: 'Sign Up', onPressed: () {}),
                     ],
@@ -99,17 +105,17 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     children: [
                       TextSpan(
-                        text: "Don't have an account? ",
+                        text: "Already have an account? ",
                         style: TextStyle(color: Colors.grey[600]),
                       ),
                       WidgetSpan(
                         child: GestureDetector(
                           onTap: () {
                             // Handle sign up action
-                            print('Sign up tapped');
+                            Navigator.pushNamed(context, RoutesNames.login);
                           },
                           child: const Text(
-                            'Sign up.',
+                            'Login ',
                             style: TextStyle(
                               color: Color(0xFF1877F2), // Facebook blue
                               fontSize: 16,
