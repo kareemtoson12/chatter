@@ -1,4 +1,5 @@
 import 'package:chatter/app/routing/routes.dart';
+import 'package:chatter/app/shared_pref.dart';
 import 'package:chatter/app/styles/font_style.dart';
 import 'package:chatter/data/models/requests/register_request_model.dart';
 import 'package:chatter/presentation/auth/cubit/cubit_logic.dart';
@@ -26,9 +27,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool isFormValid = false;
 
   void _checkFormValid() {
-    final isValid = _formKey.currentState?.validate() ?? false;
+    bool emailValid =
+        emailController.text.isNotEmpty && emailController.text.contains('@');
+    bool usernameValid = userNameController.text.isNotEmpty;
+    bool passwordValid =
+        passwordController.text.isNotEmpty &&
+        passwordController.text.length >= 6;
+
     setState(() {
-      isFormValid = isValid;
+      isFormValid = emailValid && usernameValid && passwordValid;
     });
   }
 
@@ -37,6 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return BlocConsumer<AuthCubit, AuthStates>(
       listener: (context, state) {
         if (state is AuthSuccess) {
+          SharedPref.saveToken(state.response.token);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: const Text(

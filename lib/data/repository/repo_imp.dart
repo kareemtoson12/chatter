@@ -1,6 +1,8 @@
 import 'package:chatter/app/network/error_handling.dart';
 import 'package:chatter/app/network/failure_model.dart';
+import 'package:chatter/data/models/requests/login_request_model.dart';
 import 'package:chatter/data/models/requests/register_request_model.dart';
+import 'package:chatter/data/models/responses/login_response_model.dart';
 import 'package:chatter/domain/repo/domian_repo.dart';
 import 'package:dartz/dartz.dart';
 
@@ -18,6 +20,18 @@ class RegisterRepositoryImpl implements DomianRepo {
   ) async {
     try {
       final response = await _remoteDataSource.register(request.toJson());
+      return Right(response);
+    } catch (error) {
+      return Left(ErrorHandler.handleError(error));
+    }
+  }
+
+  @override
+  Future<Either<Failure, LoginResponseModel>> login(
+    LoginRequestModel request,
+  ) async {
+    try {
+      final response = await _remoteDataSource.login(request);
       return Right(response);
     } catch (error) {
       return Left(ErrorHandler.handleError(error));

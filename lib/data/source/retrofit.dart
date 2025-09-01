@@ -1,3 +1,5 @@
+import 'package:chatter/data/models/requests/login_request_model.dart';
+import 'package:chatter/data/models/responses/login_response_model.dart';
 import 'package:chatter/data/models/responses/register_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
@@ -14,4 +16,7 @@ abstract class AppServiceClient {
   Future<RegisterResponseModel> register(
     @Queries() Map<String, dynamic> queries,
   );
+
+  @POST('Account/login')
+  Future<LoginResponseModel> login(@Body() LoginRequestModel loginRequest);
 }

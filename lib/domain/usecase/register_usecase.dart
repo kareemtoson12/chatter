@@ -10,7 +10,7 @@ class RegisterUseCase {
 
   RegisterUseCase(this.repository);
 
-  Future<Either<Failure, RegisterResponseModel>> execute(
+  Future<Either<Failure, RegisterResponseModel>> registerExecute(
     RegisterRequest request,
   ) {
     return repository.register(request);

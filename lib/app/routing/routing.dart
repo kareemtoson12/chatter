@@ -1,5 +1,6 @@
 import 'package:chatter/app/di/di.dart';
 import 'package:chatter/app/routing/routes.dart';
+import 'package:chatter/domain/usecase/login_usecase.dart';
 import 'package:chatter/presentation/auth/login/login_screen.dart';
 import 'package:chatter/presentation/auth/signup/signup_screen.dart';
 import 'package:chatter/presentation/splash/splash_screen.dart';
@@ -15,12 +16,18 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case RoutesNames.signUp:
       return MaterialPageRoute(
         builder: (_) => BlocProvider(
-          create: (_) => AuthCubit(sl<RegisterUseCase>()),
+          create: (_) => AuthCubit(sl<RegisterUseCase>(), sl<LoginUsecase>()),
           child: const SignUpScreen(),
         ),
       );
     case RoutesNames.login:
-      return MaterialPageRoute(builder: (_) => const LoginScreen());
+      return MaterialPageRoute(
+        builder: (_) => BlocProvider(
+          create: (_) => AuthCubit(sl<RegisterUseCase>(), sl<LoginUsecase>()),
+          child: const LoginScreen(),
+        ),
+      );
+
     default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(

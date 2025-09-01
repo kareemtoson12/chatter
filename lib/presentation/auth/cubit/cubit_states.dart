@@ -1,4 +1,5 @@
 import 'package:chatter/app/network/failure_model.dart';
+import 'package:chatter/data/models/responses/login_response_model.dart';
 import 'package:chatter/data/models/responses/register_response_model.dart';
 import 'package:equatable/equatable.dart';
 
@@ -17,6 +18,15 @@ class AuthSuccess extends AuthStates {
   final RegisterResponseModel response;
 
   const AuthSuccess(this.response);
+
+  @override
+  List<Object?> get props => [response];
+}
+
+class LoginSuccess extends AuthStates {
+  final LoginResponseModel response;
+
+  const LoginSuccess(this.response);
 
   @override
   List<Object?> get props => [response];

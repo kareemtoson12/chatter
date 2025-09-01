@@ -10,11 +10,13 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String name;
   final String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: validator,
       controller: controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.grey[100],
