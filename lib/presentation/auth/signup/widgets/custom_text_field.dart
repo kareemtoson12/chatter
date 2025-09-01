@@ -19,6 +19,7 @@ class CustomTextField extends StatelessWidget {
         filled: true,
         fillColor: Colors.grey[100],
         labelText: name,
+        labelStyle: const TextStyle(color: Colors.black),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: BorderSide.none,

@@ -5,5 +5,8 @@ class FontStyles {
   static TextStyle titlePacifico = GoogleFonts.pacifico(
     textStyle: const TextStyle(fontSize: 43, color: Colors.black),
   );
-  static TextStyle pacificoBlue15 = TextStyle(fontSize: 15, color: Colors.blue);
+  static TextStyle pacificoBlue15 = TextStyle(
+    fontSize: 15,
+    color: Colors.black,
+  );
 }
