@@ -1,14 +1,14 @@
 class Failure {
-  final String message;
-  final int? code;
+  final String title;
+  final int status;
 
-  Failure(this.message, {this.code});
+  Failure(this.title, {this.status = 0});
 
   @override
   String toString() {
-    if (code != null) {
-      return 'Error $code: $message';
+    if (status != null) {
+      return 'Error $status: $title';
     }
-    return 'Error: $message';
+    return 'Error: $title';
   }
 }

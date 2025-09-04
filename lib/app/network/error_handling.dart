@@ -12,7 +12,7 @@ class ErrorHandler {
         case DioExceptionType.badResponse:
           final statusCode = error.response?.statusCode ?? 0;
           final message = error.response?.data?.toString() ?? "Server Error";
-          return Failure(message, code: statusCode);
+          return Failure(message, status: statusCode);
         case DioExceptionType.cancel:
           return Failure("Request Cancelled");
         case DioExceptionType.unknown:

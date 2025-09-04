@@ -3,6 +3,7 @@ import 'package:chatter/app/routing/routes.dart';
 import 'package:chatter/domain/usecase/login_usecase.dart';
 import 'package:chatter/presentation/auth/login/login_screen.dart';
 import 'package:chatter/presentation/auth/signup/signup_screen.dart';
+import 'package:chatter/presentation/home/home_screen.dart';
 import 'package:chatter/presentation/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +26,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         builder: (_) => BlocProvider(
           create: (_) => AuthCubit(sl<RegisterUseCase>(), sl<LoginUsecase>()),
           child: const LoginScreen(),
+        ),
+      );
+    case RoutesNames.home:
+      return MaterialPageRoute(
+        builder: (_) => BlocProvider(
+          create: (_) => AuthCubit(sl<RegisterUseCase>(), sl<LoginUsecase>()),
+          child: const HomeScreen(),
         ),
       );
 

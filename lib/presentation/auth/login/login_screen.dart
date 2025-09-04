@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                state.failure.message ?? 'Login failed',
+                state.failure.title ?? 'Login failed',
                 style: const TextStyle(color: Colors.white),
               ),
               backgroundColor: Colors.red,

@@ -62,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                state.failure.message ?? 'Registration failed',
+                state.failure.title ?? 'Registration failed',
                 style: const TextStyle(color: Colors.white),
               ),
               backgroundColor: Colors.red,
